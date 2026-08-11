@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comune — Soho wine bar · Concept by Highest View</title>
+<meta name="description" content="Concept build for a Soho wine bar. Editorial layout, menu, reservations. Designed and built by Highest View.">
+<meta name="theme-color" content="#FDFBF7">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@300,400,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+<style>
+:root{
+  --cream:#FDFBF7;
+  --cream-2:#F4EFE6;
+  --espresso:#241C16;
+  --espresso-soft:rgba(36,28,22,.62);
+  --espresso-faint:rgba(36,28,22,.38);
+  --sage:#7C8A72;
+  --wine:#6E2B34;
+  --hair:rgba(36,28,22,.10);
+  --ease:cubic-bezier(.32,.72,0,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(1.25rem,5vw,3rem);
+  --maxw:1280px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--espresso);
+  font-family:'Satoshi',ui-sans-serif,system-ui,sans-serif;font-size:clamp(15px,1.02vw,16.5px);
+  line-height:1.7;letter-spacing:-.006em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Zodiak','Times New Roman',serif;font-weight:400;letter-spacing:-.025em;line-height:1.02}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--wine);color:var(--cream)}
+
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(5rem,11vw,9.5rem)}
+
+/* concept banner */
+.concept{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;padding:0 var(--pad) clamp(.9rem,2vw,1.4rem);pointer-events:none}
+.concept a{pointer-events:auto;display:flex;align-items:center;gap:.75rem;background:rgba(36,28,22,.92);
+  color:var(--cream);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-radius:999px;padding:.55rem .55rem .55rem 1.15rem;font-size:.8rem;letter-spacing:-.005em;
+  box-shadow:0 22px 50px -26px rgba(36,28,22,.8);transition:transform .6s var(--ease)}
+.concept a:hover{transform:translateY(-3px)}
+.concept .pip{width:1.7rem;height:1.7rem;border-radius:999px;background:rgba(253,251,247,.14);display:grid;place-items:center}
+.concept svg{width:11px;height:11px;stroke-width:1.6}
+.concept b{font-weight:500;color:#E3C58E}
+
+/* nav */
+.nav-rail{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:center;
+  padding:clamp(1rem,2.2vw,1.5rem) var(--pad);pointer-events:none}
+.nav{pointer-events:auto;display:flex;align-items:center;gap:.35rem;background:rgba(253,251,247,.76);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--hair);
+  border-radius:999px;padding:.45rem .45rem .45rem 1.3rem;box-shadow:0 22px 48px -34px rgba(36,28,22,.5);}
+.nav .logo{font-family:'Zodiak',serif;font-size:1.1rem;letter-spacing:.02em;padding-right:1rem}
+.nav-links{display:flex;gap:.1rem;border-left:1px solid var(--hair);padding-left:.9rem}
+.nav-links a{padding:.42rem .8rem;border-radius:999px;font-size:.84rem;color:var(--espresso-soft);
+  transition:color .45s var(--ease),background .45s var(--ease)}
+.nav-links a:hover{color:var(--espresso);background:rgba(36,28,22,.05)}
+.btn{display:inline-flex;align-items:center;gap:.8rem;border-radius:999px;
+  padding:.5rem .5rem .5rem 1.3rem;font-size:.86rem;font-weight:500;cursor:pointer;border:1px solid transparent;
+  transition:transform .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.btn:active{transform:scale(.975)}
+.btn .pip{width:1.85rem;height:1.85rem;border-radius:999px;display:grid;place-items:center;flex:none;
+  transition:transform .55s var(--ease),background .55s var(--ease)}
+.btn .pip svg{width:12px;height:12px;stroke-width:1.5}
+.btn-dark{background:var(--espresso);color:var(--cream);box-shadow:0 16px 34px -20px rgba(36,28,22,.7)}
+.btn-dark .pip{background:rgba(253,251,247,.14)}
+.btn-dark:hover .pip{transform:translate(3px,-1px) scale(1.06);background:rgba(253,251,247,.22)}
+.btn-line{border-color:var(--hair);background:rgba(36,28,22,.02)}
+.btn-line .pip{background:rgba(36,28,22,.06)}
+.btn-line:hover{background:rgba(36,28,22,.05)}
+.btn-line:hover .pip{transform:translate(3px,-1px) scale(1.06)}
+.burger{display:none;width:2.4rem;height:2.4rem;border-radius:999px;background:rgba(36,28,22,.04);
+  border:1px solid var(--hair);cursor:pointer;position:relative;flex:none}
+.burger i{position:absolute;left:50%;margin-left:-7px;width:14px;height:1.3px;background:var(--espresso);
+  border-radius:2px;transition:transform .6s var(--ease)}
+.burger i:nth-child(1){top:14.5px}.burger i:nth-child(2){top:20.5px}
+body.open .burger i:nth-child(1){transform:translateY(3px) rotate(45deg)}
+body.open .burger i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+.sheet{position:fixed;inset:0;z-index:35;background:rgba(253,251,247,.94);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding:0 var(--pad);
+  opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s}
+body.open .sheet{opacity:1;visibility:visible}
+.sheet a{font-family:'Zodiak',serif;font-size:clamp(2.2rem,10vw,3.4rem);opacity:0;transform:translateY(44px);
+  transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+body.open .sheet a{opacity:1;transform:none}
+body.open .sheet a:nth-child(1){transition-delay:.10s}
+body.open .sheet a:nth-child(2){transition-delay:.16s}
+body.open .sheet a:nth-child(3){transition-delay:.22s}
+body.open .sheet a:nth-child(4){transition-delay:.28s}
+
+/* editorial split hero */
+.hero{min-height:100dvh;display:flex;align-items:center;padding-block:8.5rem 4rem}
+.hero-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;width:100%}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:10px;text-transform:uppercase;
+  letter-spacing:.24em;color:var(--espresso-faint);margin-bottom:2rem}
+.kicker::before{content:"";width:26px;height:1px;background:var(--espresso-faint)}
+.hero h1{font-size:clamp(3.4rem,10.5vw,8.5rem);letter-spacing:-.045em}
+.hero h1 em{font-style:italic;color:var(--wine);padding-right:.09em}
+.hero .lede{color:var(--espresso-soft);font-size:clamp(1rem,1.3vw,1.15rem);max-width:40ch;margin-top:2rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.4rem}
+
+/* art panels (stand-ins for photography) */
+.panel{position:relative;border-radius:1.6rem;overflow:hidden;background:var(--cream-2)}
+.panel::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+.art-1{background:
+  radial-gradient(120% 90% at 22% 18%,rgba(110,43,52,.92),transparent 58%),
+  radial-gradient(90% 80% at 82% 78%,rgba(36,28,22,.95),transparent 62%),
+  linear-gradient(158deg,#7A5540,#2C211A)}
+.art-2{background:
+  radial-gradient(100% 80% at 78% 22%,rgba(124,138,114,.85),transparent 60%),
+  linear-gradient(150deg,#D9CBB4,#6B5A48)}
+.art-3{background:
+  radial-gradient(110% 90% at 30% 80%,rgba(110,43,52,.75),transparent 62%),
+  linear-gradient(170deg,#4A3A30,#1C1512)}
+.art-4{background:
+  radial-gradient(120% 100% at 60% 20%,rgba(227,197,142,.75),transparent 64%),
+  linear-gradient(140deg,#8A6E54,#312720)}
+.hero-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.9rem}
+.hero-stack .panel:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}
+.hero-stack .panel:nth-child(2),.hero-stack .panel:nth-child(3){aspect-ratio:1/1}
+
+/* room */
+.room{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.room .panel{aspect-ratio:4/5}
+.h2{font-size:clamp(2.2rem,5.6vw,4rem);max-width:15ch}
+.body-copy{color:var(--espresso-soft);margin-top:1.6rem;max-width:46ch}
+.body-copy + .body-copy{margin-top:1rem}
+
+/* menu */
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
+.menu-block h3{font-size:1.5rem;padding-bottom:1.1rem;border-bottom:1px solid var(--hair);margin-bottom:1.4rem}
+.dish{display:flex;justify-content:space-between;gap:1.5rem;align-items:baseline;padding:.85rem 0;
+  border-bottom:1px solid rgba(36,28,22,.055)}
+.dish:last-child{border-bottom:0}
+.dish .n{font-size:1rem;letter-spacing:-.01em}
+.dish .d{display:block;font-size:.84rem;color:var(--espresso-faint);margin-top:.15rem;max-width:34ch}
+.dish .p{font-family:'Zodiak',serif;font-size:1.05rem;color:var(--espresso-soft);white-space:nowrap}
+
+/* wine rail */
+.rail{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1.2rem;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none}
+.rail::-webkit-scrollbar{display:none}
+.pour{flex:0 0 clamp(230px,26vw,310px);scroll-snap-align:start;
+  transition:transform .8s var(--ease)}
+.pour:hover{transform:translateY(-6px)}
+.pour .panel{aspect-ratio:3/4;margin-bottom:1.1rem}
+.pour h4{font-family:'Zodiak',serif;font-size:1.2rem;font-weight:400}
+.pour span{display:block;font-size:.83rem;color:var(--espresso-faint);margin-top:.25rem}
+.pour .p{font-size:.9rem;color:var(--wine);margin-top:.5rem}
+
+/* find */
+.find{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
+.rows{display:flex;flex-direction:column;margin-top:1.8rem}
+.row{display:flex;justify-content:space-between;gap:1.5rem;padding:.9rem 0;border-bottom:1px solid var(--hair);font-size:.95rem}
+.row span:first-child{color:var(--espresso-faint)}
+
+/* reserve */
+.reserve{background:var(--espresso);color:var(--cream);border-radius:2rem;
+  padding:clamp(2.5rem,6vw,5.5rem);text-align:center;position:relative;overflow:hidden}
+.reserve::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(80% 70% at 50% 0%,rgba(110,43,52,.55),transparent 70%)}
+.reserve>*{position:relative}
+.reserve h2{font-size:clamp(2.2rem,6vw,4.2rem);color:var(--cream)}
+.reserve p{color:rgba(253,251,247,.6);margin:1.4rem auto 2.4rem;max-width:44ch}
+.btn-cream{background:var(--cream);color:var(--espresso)}
+.btn-cream .pip{background:rgba(36,28,22,.09)}
+.btn-cream:hover .pip{transform:translate(3px,-1px) scale(1.06)}
+
+footer{padding-block:3rem 6.5rem;border-top:1px solid var(--hair)}
+.foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.84rem;color:var(--espresso-faint)}
+
+.rv{opacity:0;transform:translateY(44px);filter:blur(8px);
+  transition:opacity .95s var(--ease-out),transform .95s var(--ease-out),filter .95s var(--ease-out)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;filter:none;transition:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+
+@media (max-width:900px){.nav-links{display:none}.burger{display:block}.nav .btn{display:none}}
+@media (max-width:768px){
+  section{padding-block:clamp(4rem,11vw,5.5rem)}
+  .wrap{padding-inline:1.15rem}
+  .hero{padding-block:7rem 3rem}
+  .hero-split,.room,.menu-cols,.find{grid-template-columns:1fr;gap:2.5rem}
+  .hero-actions .btn{flex:1 1 100%;justify-content:space-between}
+  .room .panel{aspect-ratio:4/3}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="nav-rail">
+  <nav class="nav">
+    <a href="#top" class="logo">Comune</a>
+    <div class="nav-links">
+      <a href="#room">The room</a><a href="#menu">Menu</a><a href="#pours">Wine</a><a href="#find">Find us</a>
+    </div>
+    <a href="#reserve" class="btn btn-dark">Reserve<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+  </nav>
+</header>
+
+<div class="sheet" id="sheet">
+  <a href="#room">The room</a><a href="#menu">Menu</a><a href="#pours">Wine</a><a href="#reserve">Reserve</a>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-split">
+    <div>
+      <span class="kicker rv">Dean Street · Soho · Since 2019</span>
+      <h1 class="rv">Small room.<br><em>Long</em> list.</h1>
+      <p class="lede rv">Forty covers, one hundred and sixty bottles, and a kitchen that changes its mind every Tuesday. Walk-ins at the bar, always.</p>
+      <div class="hero-actions rv">
+        <a href="#reserve" class="btn btn-dark">Book a table<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+        <a href="#menu" class="btn btn-line">See the menu<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+      </div>
+    </div>
+    <div class="hero-stack rv">
+      <div class="panel art-1"></div>
+      <div class="panel art-2"></div>
+      <div class="panel art-3"></div>
+    </div>
+  </div>
+</section>
+
+<section id="room">
+  <div class="wrap room">
+    <div class="panel art-4 rv"></div>
+    <div>
+      <span class="kicker rv">The room</span>
+      <h2 class="h2 rv">Built for the second bottle.</h2>
+      <p class="body-copy rv">We took a narrow Soho shopfront, kept the tiles, and put the bar down the whole length of it so nobody eats with their back to the room. Eight seats at the marble, the rest on banquettes.</p>
+      <p class="body-copy rv">There is no music policy and no dress code. There is a rule about the third course, which is that you should have it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu" style="background:var(--cream-2)">
+  <div class="wrap">
+    <span class="kicker rv">Kitchen</span>
+    <h2 class="h2 rv" style="margin-bottom:clamp(2.5rem,5vw,4rem)">Written every Tuesday.</h2>
+    <div class="menu-cols">
+      <div class="menu-block rv">
+        <h3>Small</h3>
+        <div class="dish"><div class="n">Focaccia, cultured butter<span class="d">Baked at four, gone by nine</span></div><span class="p">6</span></div>
+        <div class="dish"><div class="n">Datterini, stracciatella, basil oil<span class="d">Only while they are worth eating</span></div><span class="p">11</span></div>
+        <div class="dish"><div class="n">Cured trout, fennel, blood orange<span class="d">Loch Duart, cured in house</span></div><span class="p">13</span></div>
+        <div class="dish"><div class="n">Grilled sourdough, anchovy, egg yolk<span class="d">Cantabrian, and worth it</span></div><span class="p">9</span></div>
+      </div>
+      <div class="menu-block rv">
+        <h3>Large</h3>
+        <div class="dish"><div class="n">Rigatoni, four-hour shin ragù<span class="d">The one that never comes off</span></div><span class="p">19</span></div>
+        <div class="dish"><div class="n">Whole plaice, brown butter, capers<span class="d">For two, off the bone at the table</span></div><span class="p">34</span></div>
+        <div class="dish"><div class="n">Hispi cabbage, hazelnut, aged pecorino<span class="d">Charred hard on the plancha</span></div><span class="p">14</span></div>
+        <div class="dish"><div class="n">Tiramisù<span class="d">Made this morning, finished tonight</span></div><span class="p">8</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pours">
+  <div class="wrap">
+    <span class="kicker rv">By the glass</span>
+    <h2 class="h2 rv" style="margin-bottom:clamp(2.5rem,5vw,3.5rem)">Six open right now.</h2>
+    <div class="rail rv">
+      <article class="pour"><div class="panel art-1"></div><h4>Trebbiano d'Abruzzo</h4><span>Emidio Pepe · 2019 · Abruzzo</span><div class="p">14 / glass</div></article>
+      <article class="pour"><div class="panel art-2"></div><h4>Etna Rosso</h4><span>Graci · 2021 · Sicilia</span><div class="p">12 / glass</div></article>
+      <article class="pour"><div class="panel art-4"></div><h4>Chablis 1er Cru</h4><span>Moreau-Naudet · 2020 · Bourgogne</span><div class="p">16 / glass</div></article>
+      <article class="pour"><div class="panel art-3"></div><h4>Barbera d'Alba</h4><span>Vajra · 2022 · Piemonte</span><div class="p">11 / glass</div></article>
+      <article class="pour"><div class="panel art-2"></div><h4>Riesling Trocken</h4><span>Keller · 2021 · Rheinhessen</span><div class="p">15 / glass</div></article>
+      <article class="pour"><div class="panel art-1"></div><h4>Blanc de Blancs</h4><span>Chartogne-Taillet · NV · Champagne</span><div class="p">18 / glass</div></article>
+    </div>
+  </div>
+</section>
+
+<section id="find">
+  <div class="wrap find">
+    <div>
+      <span class="kicker rv">Find us</span>
+      <h2 class="h2 rv">42 Dean Street,<br>London W1D</h2>
+      <p class="body-copy rv">Two minutes from Tottenham Court Road. The green door between the barber and the record shop.</p>
+    </div>
+    <div class="rv">
+      <div class="rows">
+        <div class="row"><span>Tuesday — Thursday</span><span>17:00 — 23:00</span></div>
+        <div class="row"><span>Friday — Saturday</span><span>12:00 — 00:00</span></div>
+        <div class="row"><span>Sunday</span><span>12:00 — 18:00</span></div>
+        <div class="row"><span>Monday</span><span>Closed</span></div>
+        <div class="row"><span>Bar</span><span>Walk-ins only</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserve">
+  <div class="wrap">
+    <div class="reserve rv">
+      <h2>Come and sit down.</h2>
+      <p>Tables for two to six online. Anything larger, call us and we will make it work.</p>
+      <a href="#" class="btn btn-cream" onclick="return false">Reserve a table<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Comune · 42 Dean Street, London W1D</span>
+    <span>A concept build — not a real restaurant</span>
+  </div>
+</footer>
+
+<div class="concept">
+  <a href="../index.html">
+    <span>Concept build by <b>Highest View</b></span>
+    <span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+  </a>
+</div>
+
+<script>
+document.getElementById("burger").addEventListener("click",()=>document.body.classList.toggle("open"));
+document.querySelectorAll("#sheet a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("open")));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classList.remove("open")});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.1});
+document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%3,2)*90)+"ms";io.observe(el)});
+</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen Skin — Aesthetics clinic · Concept by Highest View</title>
+<meta name="description" content="Concept build for an aesthetics clinic. Treatment pages, transparent pricing, online booking. Designed and built by Highest View.">
+<meta name="theme-color" content="#FAFAF9">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◍</text></svg>">
+<style>
+:root{
+  --bg:#FAFAF9;
+  --bg-2:#F1F1EF;
+  --ink:#14181A;
+  --ink-soft:rgba(20,24,26,.58);
+  --ink-faint:rgba(20,24,26,.34);
+  --teal:#356F72;
+  --teal-soft:#E4EFEF;
+  --nude:#E8D9CE;
+  --line:rgba(20,24,26,.07);
+  --white:#FFFFFF;
+  --soft:0 2px 4px rgba(20,24,26,.02),0 12px 24px -12px rgba(20,24,26,.06),0 40px 70px -40px rgba(20,24,26,.10);
+  --soft-lift:0 4px 8px rgba(20,24,26,.03),0 20px 40px -16px rgba(20,24,26,.09),0 60px 90px -50px rgba(20,24,26,.14);
+  --ease:cubic-bezier(.32,.72,0,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --r-out:2rem;
+  --r-in:calc(2rem - .4rem);
+  --pad:clamp(1.15rem,4.5vw,3rem);
+  --maxw:1280px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:'Satoshi',ui-sans-serif,system-ui,sans-serif;font-size:clamp(15px,1.02vw,16.5px);
+  line-height:1.68;letter-spacing:-.008em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Switzer','Satoshi',sans-serif;font-weight:600;letter-spacing:-.038em;line-height:.98}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--teal);color:#fff}
+
+.aura{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aura i{position:absolute;border-radius:50%;filter:blur(100px)}
+.aura i:nth-child(1){width:55vw;height:55vw;left:-14vw;top:-16vw;background:rgba(53,111,114,.10)}
+.aura i:nth-child(2){width:48vw;height:48vw;right:-14vw;top:34vh;background:rgba(232,217,206,.5)}
+.aura i:nth-child(3){width:42vw;height:42vw;left:28vw;bottom:-18vw;background:rgba(53,111,114,.07)}
+main,header,footer{position:relative;z-index:2}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(5rem,11vw,9.5rem)}
+
+/* concept banner */
+.concept{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;
+  padding:0 var(--pad) clamp(.9rem,2vw,1.4rem);pointer-events:none}
+.concept a{pointer-events:auto;display:flex;align-items:center;gap:.75rem;background:var(--ink);color:#fff;
+  border-radius:999px;padding:.55rem .55rem .55rem 1.15rem;font-size:.8rem;
+  box-shadow:var(--soft-lift);transition:transform .6s var(--ease)}
+.concept a:hover{transform:translateY(-3px)}
+.concept .pip{width:1.7rem;height:1.7rem;border-radius:999px;background:rgba(255,255,255,.16);display:grid;place-items:center}
+.concept svg{width:11px;height:11px;stroke-width:1.6}
+.concept b{font-weight:500;color:#9FD0CF}
+
+/* nav */
+.nav-rail{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:center;
+  padding:clamp(1rem,2.2vw,1.5rem) var(--pad);pointer-events:none}
+.nav{pointer-events:auto;display:flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.72);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--line);
+  border-radius:999px;padding:.45rem .45rem .45rem 1.25rem;box-shadow:var(--soft)}
+.logo{display:flex;align-items:center;gap:.5rem;font-family:'Switzer',sans-serif;font-weight:600;
+  font-size:.95rem;letter-spacing:-.03em;padding-right:1rem}
+.logo b{color:var(--teal);font-weight:600}
+.nav-links{display:flex;gap:.1rem;border-left:1px solid var(--line);padding-left:.9rem}
+.nav-links a{padding:.42rem .8rem;border-radius:999px;font-size:.84rem;color:var(--ink-soft);
+  transition:color .45s var(--ease),background .45s var(--ease)}
+.nav-links a:hover{color:var(--ink);background:rgba(20,24,26,.045)}
+.btn{display:inline-flex;align-items:center;gap:.8rem;border-radius:999px;
+  padding:.5rem .5rem .5rem 1.3rem;font-size:.87rem;font-weight:500;cursor:pointer;border:1px solid transparent;
+  transition:transform .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.btn:active{transform:scale(.975)}
+.btn .pip{width:1.9rem;height:1.9rem;border-radius:999px;display:grid;place-items:center;flex:none;
+  transition:transform .55s var(--ease),background .55s var(--ease)}
+.btn .pip svg{width:12px;height:12px;stroke-width:1.5}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 14px 30px -16px rgba(53,111,114,.75)}
+.btn-teal .pip{background:rgba(255,255,255,.18)}
+.btn-teal:hover{background:#3D7E81;box-shadow:0 20px 40px -16px rgba(53,111,114,.85)}
+.btn-teal:hover .pip{transform:translate(3px,-1px) scale(1.06);background:rgba(255,255,255,.26)}
+.btn-line{border-color:var(--line);background:rgba(255,255,255,.6);box-shadow:var(--soft)}
+.btn-line .pip{background:rgba(20,24,26,.05)}
+.btn-line:hover{background:#fff}
+.btn-line:hover .pip{transform:translate(3px,-1px) scale(1.06)}
+.burger{display:none;width:2.4rem;height:2.4rem;border-radius:999px;background:rgba(20,24,26,.04);
+  border:1px solid var(--line);cursor:pointer;position:relative;flex:none}
+.burger i{position:absolute;left:50%;margin-left:-7px;width:14px;height:1.4px;background:var(--ink);
+  border-radius:2px;transition:transform .6s var(--ease)}
+.burger i:nth-child(1){top:14.5px}.burger i:nth-child(2){top:20.5px}
+body.open .burger i:nth-child(1){transform:translateY(3px) rotate(45deg)}
+body.open .burger i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+.sheet{position:fixed;inset:0;z-index:35;background:rgba(250,250,249,.93);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  display:flex;flex-direction:column;justify-content:center;gap:.35rem;padding:0 var(--pad);
+  opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s}
+body.open .sheet{opacity:1;visibility:visible}
+.sheet a{font-family:'Switzer',sans-serif;font-size:clamp(2.2rem,10vw,3.4rem);font-weight:600;
+  letter-spacing:-.045em;opacity:0;transform:translateY(44px);
+  transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+body.open .sheet a{opacity:1;transform:none}
+body.open .sheet a:nth-child(1){transition-delay:.10s}
+body.open .sheet a:nth-child(2){transition-delay:.16s}
+body.open .sheet a:nth-child(3){transition-delay:.22s}
+body.open .sheet a:nth-child(4){transition-delay:.28s}
+
+/* double bezel */
+.shell{background:rgba(20,24,26,.028);border:1px solid var(--line);border-radius:var(--r-out);padding:7px}
+.core{background:var(--white);border-radius:var(--r-in);box-shadow:var(--soft);height:100%;
+  transition:box-shadow .8s var(--ease),transform .8s var(--ease)}
+.shell:hover .core{box-shadow:var(--soft-lift);transform:translateY(-4px)}
+
+.tagline{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding:.4rem .9rem;
+  font-size:10px;text-transform:uppercase;letter-spacing:.19em;font-weight:500;
+  color:var(--teal);background:var(--teal-soft);border:1px solid rgba(53,111,114,.14)}
+.tagline::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.h2{font-size:clamp(2.2rem,5.8vw,4.2rem);max-width:17ch}
+.lede{color:var(--ink-soft);font-size:clamp(1rem,1.3vw,1.15rem);max-width:52ch;margin-top:1.4rem}
+
+/* hero */
+.hero{min-height:100dvh;display:flex;align-items:center;padding-block:8.5rem 4rem}
+.hero-in{width:100%}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.8rem);letter-spacing:-.05em;margin-top:1.5rem;max-width:15ch}
+.hero h1 span{color:var(--teal)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.4rem}
+.hero-bento{display:grid;grid-template-columns:repeat(6,1fr);gap:.85rem;margin-top:clamp(3rem,6vw,5rem)}
+.tile{padding:1.6rem 1.7rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.6rem;min-height:170px}
+.tile .k{font-size:10px;text-transform:uppercase;letter-spacing:.19em;color:var(--ink-faint)}
+.tile .v{font-family:'Switzer',sans-serif;font-weight:600;font-size:clamp(1.6rem,2.6vw,2.3rem);letter-spacing:-.045em;line-height:1}
+.tile .v small{font-size:.85rem;font-family:'Satoshi',sans-serif;font-weight:400;color:var(--ink-faint);letter-spacing:0}
+.b-2{grid-column:span 2}.b-3{grid-column:span 3}.b-4{grid-column:span 4}.b-6{grid-column:span 6}
+.tile-accent{background:linear-gradient(150deg,var(--teal-soft),#fff 62%)}
+.tile-nude{background:linear-gradient(150deg,var(--nude),#fff 66%)}
+
+/* treatments */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.9rem}
+.treat{padding:clamp(1.7rem,2.6vw,2.3rem);display:flex;flex-direction:column;gap:.8rem;height:100%}
+.treat .ico{width:2.7rem;height:2.7rem;border-radius:.9rem;display:grid;place-items:center;
+  background:var(--teal-soft);color:var(--teal);margin-bottom:.4rem}
+.treat .ico svg{width:17px;height:17px;stroke-width:1.3}
+.treat h3{font-size:clamp(1.25rem,2vw,1.55rem)}
+.treat p{color:var(--ink-soft);font-size:.93rem}
+.treat .from{margin-top:auto;padding-top:1.1rem;font-size:.86rem;color:var(--teal);font-weight:500}
+
+/* practitioner */
+.who{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.portrait{border-radius:var(--r-in);aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:linear-gradient(165deg,#DCE7E7,#F3ECE6 55%,#E8D9CE)}
+.portrait::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 55% at 50% 32%,rgba(255,255,255,.75),transparent 70%)}
+.portrait span{position:absolute;left:0;right:0;bottom:1.4rem;text-align:center;font-size:.78rem;
+  color:var(--ink-faint);letter-spacing:.02em}
+
+/* pricing rows */
+.plist{margin-top:clamp(2rem,4vw,3rem)}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--line)}
+.prow .t{font-weight:500;font-size:1rem}
+.prow .t small{display:block;font-weight:400;font-size:.84rem;color:var(--ink-faint);margin-top:.2rem}
+.prow .v{font-family:'Switzer',sans-serif;font-weight:600;font-size:1.15rem;white-space:nowrap;letter-spacing:-.03em}
+
+/* book */
+.book{border-radius:var(--r-in);padding:clamp(2.4rem,6vw,5rem);text-align:center;
+  background:linear-gradient(160deg,#1B2426,var(--ink) 60%);color:#fff;position:relative;overflow:hidden}
+.book::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(75% 70% at 50% 0%,rgba(53,111,114,.55),transparent 72%)}
+.book>*{position:relative}
+.book h2{font-size:clamp(2.1rem,5.6vw,3.8rem);max-width:16ch;margin-inline:auto}
+.book p{color:rgba(255,255,255,.6);margin:1.3rem auto 2.3rem;max-width:44ch}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white .pip{background:rgba(20,24,26,.07)}
+.btn-white:hover .pip{transform:translate(3px,-1px) scale(1.06)}
+
+footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.84rem;color:var(--ink-faint)}
+
+.rv{opacity:0;transform:translateY(44px);filter:blur(8px);
+  transition:opacity .95s var(--ease-out),transform .95s var(--ease-out),filter .95s var(--ease-out)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;filter:none;transition:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+
+@media (max-width:1000px){.b-3{grid-column:span 6}.b-2{grid-column:span 3}.b-4{grid-column:span 6}
+  .who{grid-template-columns:1fr}.portrait{max-width:330px;aspect-ratio:1/1}}
+@media (max-width:900px){.nav-links{display:none}.burger{display:block}.nav .btn{display:none}}
+@media (max-width:768px){
+  section{padding-block:clamp(4rem,11vw,5.5rem)}
+  .wrap{padding-inline:1.15rem}
+  .hero{padding-block:7rem 3rem}
+  .grid,.hero-bento{grid-template-columns:1fr;gap:.75rem}
+  .b-2,.b-3,.b-4,.b-6{grid-column:span 1}
+  .hero-actions .btn{flex:1 1 100%;justify-content:space-between}
+}
+</style>
+</head>
+<body>
+<div class="aura"><i></i><i></i><i></i></div>
+
+<header class="nav-rail">
+  <nav class="nav">
+    <a href="#top" class="logo"><b>◍</b> Lumen Skin</a>
+    <div class="nav-links">
+      <a href="#treatments">Treatments</a><a href="#who">Practitioner</a><a href="#prices">Prices</a>
+    </div>
+    <a href="#book" class="btn btn-teal">Book a consultation<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+  </nav>
+</header>
+
+<div class="sheet" id="sheet">
+  <a href="#treatments">Treatments</a><a href="#who">Practitioner</a><a href="#prices">Prices</a><a href="#book">Book</a>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <span class="tagline rv">Marylebone · CQC registered</span>
+    <h1 class="rv">Skin that looks like <span>yours</span>, on a good day.</h1>
+    <p class="lede rv">A small clinic that says no more often than yes. Every treatment starts with a consultation, every price is published, and nobody here works on commission.</p>
+    <div class="hero-actions rv">
+      <a href="#book" class="btn btn-teal">Book a consultation<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+      <a href="#treatments" class="btn btn-line">See treatments<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+    </div>
+
+    <div class="hero-bento">
+      <div class="shell rv b-2"><div class="core tile tile-accent">
+        <span class="k">Consultations</span><span class="v">Free<small> · 30 minutes</small></span>
+      </div></div>
+      <div class="shell rv b-2"><div class="core tile">
+        <span class="k">Practitioners</span><span class="v">2<small> · both prescribers</small></span>
+      </div></div>
+      <div class="shell rv b-2"><div class="core tile tile-nude">
+        <span class="k">Since</span><span class="v">2016<small> · Marylebone</small></span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="treatments">
+  <div class="wrap">
+    <span class="tagline rv">Treatments</span>
+    <h2 class="h2 rv" style="margin-top:1.4rem;margin-bottom:clamp(2.5rem,5vw,4rem)">Fewer options, chosen properly.</h2>
+    <div class="grid">
+      <div class="shell rv b-3"><div class="core treat">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4"/></svg></span>
+        <h3>Skin analysis &amp; plan</h3>
+        <p>A proper look under magnification and UV, then a written twelve-week plan. No products sold on the day, no pressure. Most people leave with a routine and nothing else.</p>
+        <span class="from">Free with any consultation</span>
+      </div></div>
+      <div class="shell rv b-3"><div class="core treat">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l14 8M19 8L5 16"/></svg></span>
+        <h3>Injectables</h3>
+        <p>Wrinkle-relaxing and dermal filler, placed conservatively by prescribing practitioners. We will tell you when the answer is less, or none. Two-week review included in every course.</p>
+        <span class="from">From £180</span>
+      </div></div>
+      <div class="shell rv b-2"><div class="core treat">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c4-9 12-9 16 0"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+        <h3>Medical peels</h3>
+        <p>Graded acid peels for pigmentation, texture and acne scarring. Course of three to six.</p>
+        <span class="from">From £140</span>
+      </div></div>
+      <div class="shell rv b-2"><div class="core treat">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></span>
+        <h3>Microneedling</h3>
+        <p>Collagen induction with growth factors, for scarring, pores and early laxity.</p>
+        <span class="from">From £220</span>
+      </div></div>
+      <div class="shell rv b-2"><div class="core treat">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><path d="M9.5 10.5h5"/></svg></span>
+        <h3>Prescription skincare</h3>
+        <p>Tretinoin, azelaic and tranexamic acid, prescribed and reviewed, not sold off a shelf.</p>
+        <span class="from">From £45 / month</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="who" style="background:var(--bg-2)">
+  <div class="wrap who">
+    <div class="portrait rv"><span>Dr Elena Marsh, MBBS MRCGP</span></div>
+    <div>
+      <span class="tagline rv">The practitioner</span>
+      <h2 class="h2 rv" style="margin-top:1.4rem">You will see the same face every time.</h2>
+      <p class="lede rv">Fifteen years in general practice before aesthetics, and a rule that has not changed since: if a treatment will not measurably improve your skin, we do not do it.</p>
+      <p class="lede rv">Every course includes a two-week review at no cost, because the honest measure of good work is what it looks like after it settles.</p>
+    </div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="wrap">
+    <span class="tagline rv">Prices</span>
+    <h2 class="h2 rv" style="margin-top:1.4rem">Published, because you should not have to ask.</h2>
+    <div class="plist rv">
+      <div class="prow"><span class="t">Consultation &amp; skin analysis<small>30 minutes, no obligation</small></span><span class="v">Free</span></div>
+      <div class="prow"><span class="t">Wrinkle relaxing — one area<small>Includes two-week review</small></span><span class="v">£180</span></div>
+      <div class="prow"><span class="t">Wrinkle relaxing — three areas<small>Includes two-week review</small></span><span class="v">£330</span></div>
+      <div class="prow"><span class="t">Dermal filler — 1ml<small>Priced by syringe, never by area</small></span><span class="v">£320</span></div>
+      <div class="prow"><span class="t">Medical peel — single<small>Graded to your skin on the day</small></span><span class="v">£140</span></div>
+      <div class="prow"><span class="t">Medical peel — course of three<small>Six-week programme</small></span><span class="v">£375</span></div>
+      <div class="prow"><span class="t">Microneedling with growth factors<small>Single session</small></span><span class="v">£220</span></div>
+      <div class="prow"><span class="t">Prescription skincare review<small>Monthly, includes adjustments</small></span><span class="v">£45</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book rv">
+      <h2>Start with a conversation, not a needle.</h2>
+      <p>Thirty minutes, free, and you leave with a written plan whether or not you book anything.</p>
+      <a href="#" class="btn btn-white" onclick="return false">Book a consultation<span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Lumen Skin · 18 Weymouth Street, London W1G</span>
+    <span>A concept build — not a real clinic</span>
+  </div>
+</footer>
+
+<div class="concept">
+  <a href="../index.html">
+    <span>Concept build by <b>Highest View</b></span>
+    <span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+  </a>
+</div>
+
+<script>
+document.getElementById("burger").addEventListener("click",()=>document.body.classList.toggle("open"));
+document.querySelectorAll("#sheet a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("open")));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classList.remove("open")});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.1});
+document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%3,2)*90)+"ms";io.observe(el)});
+</script>
+</body>
+</html>
