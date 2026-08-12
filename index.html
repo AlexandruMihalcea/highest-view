@@ -163,10 +163,24 @@ body.menu-open .sheet a:nth-child(5){transition-delay:.34s}
   background:linear-gradient(102deg,var(--gold),#f5d9a4 40%,var(--gold-deep));
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
-.hero-side{display:flex;flex-direction:column;gap:.9rem;padding-bottom:.6rem}
-.stat{display:flex;align-items:baseline;gap:.9rem;padding:1.15rem 1.4rem}
-.stat b{font-family:'Clash Display',sans-serif;font-size:1.9rem;font-weight:500;color:var(--gold);line-height:1}
-.stat span{font-size:.86rem;color:var(--paper-dim);letter-spacing:-.005em}
+.hero-facts{display:flex;flex-wrap:wrap;gap:2.2rem;margin-top:2.8rem;
+  padding-top:1.9rem;border-top:1px solid var(--hair-soft)}
+.hero-facts div{max-width:15ch}
+.hero-facts b{display:block;font-family:'Clash Display',sans-serif;font-size:1.75rem;
+  font-weight:500;color:var(--gold);line-height:1;margin-bottom:.4rem}
+.hero-facts span{font-size:.82rem;color:var(--paper-dim);line-height:1.45;display:block}
+
+/* the deck — real work, stacked */
+.hero-side{position:relative;min-height:clamp(320px,34vw,440px)}
+.deck{position:absolute;border-radius:1.1rem;overflow:hidden;
+  border:1px solid rgba(244,242,238,.13);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.95), 0 8px 24px -12px rgba(0,0,0,.7);
+  transition:transform 1s var(--ease)}
+.deck img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.deck-back{width:78%;right:0;top:0;aspect-ratio:16/10;transform:rotate(2.6deg)}
+.deck-front{width:84%;left:0;bottom:0;aspect-ratio:16/10;transform:rotate(-2deg)}
+.hero-side:hover .deck-back{transform:rotate(3.4deg) translateY(-6px)}
+.hero-side:hover .deck-front{transform:rotate(-2.6deg) translateY(6px)}
 
 /* ============ BENTO ============ */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
@@ -187,7 +201,8 @@ body.menu-open .sheet a:nth-child(5){transition-delay:.34s}
 .card:hover{transform:translateY(-6px)}
 .card-vis{position:relative;aspect-ratio:16/10;overflow:hidden;
   border-radius:calc(var(--r-in) - 4px);background:#111114}
-.card-vis .frame{position:absolute;inset:0;transition:transform 1s var(--ease)}
+.card-vis .frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:top center;transition:transform 1s var(--ease)}
 .card:hover .card-vis .frame{transform:scale(1.045)}
 .card-body{padding:1.5rem .4rem .5rem;display:flex;flex-direction:column;gap:.5rem}
 .card-body h3{font-size:1.35rem}
@@ -291,8 +306,7 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
 /* ============ RESPONSIVE ============ */
 @media (max-width:1080px){
   .hero-grid{grid-template-columns:1fr;align-items:start}
-  .hero-side{flex-direction:row;flex-wrap:wrap;padding-bottom:0}
-  .hero-side>*{flex:1 1 200px}
+  .hero-side{min-height:clamp(260px,52vw,380px);margin-top:1rem}
   .about{grid-template-columns:1fr}
   .about-photo{max-width:340px;aspect-ratio:1/1}
   .contact-grid{grid-template-columns:1fr}
@@ -379,11 +393,15 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
           <span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
         </a>
       </div>
+      <div class="hero-facts rv">
+        <div><b>5</b><span data-i18n="hero.s1">working days from brief to live site</span></div>
+        <div><b>4</b><span data-i18n="hero.s2">languages, so your market reads you in theirs</span></div>
+        <div><b>10y</b><span data-i18n="hero.s3">inside London hospitality before building this</span></div>
+      </div>
     </div>
-    <aside class="hero-side">
-      <div class="shell rv"><div class="core stat"><b>5</b><span data-i18n="hero.s1">working days from brief to live site</span></div></div>
-      <div class="shell rv"><div class="core stat"><b>4</b><span data-i18n="hero.s2">languages, so your market reads you in theirs</span></div></div>
-      <div class="shell rv"><div class="core stat"><b>10<i style="font-style:normal;font-size:1.1rem">y</i></b><span data-i18n="hero.s3">inside London hospitality before building this</span></div></div>
+    <aside class="hero-side rv">
+      <figure class="deck deck-back"><img src="img/work/comune.jpg" alt="Comune — a build by Highest View" loading="eager"></figure>
+      <figure class="deck deck-front"><img src="img/work/matei.jpg" alt="Meșter Matei — a build by Highest View" loading="eager" fetchpriority="high"></figure>
     </aside>
   </div>
 </section>
@@ -470,26 +488,16 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
     <div class="work-grid">
 
       <a class="shell rv s-3" href="https://alexandrumihalcea.github.io/mester-razvan/" target="_blank" rel="noopener"><div class="core card">
-        <div class="card-vis"><div class="frame pv" style="background:linear-gradient(160deg,#1a1206,#0b0b0d);color:#e8b866">
-          <div class="pv-bar"><i></i><i></i><i></i></div>
-          <div class="pv-t" style="font-size:22px;color:#f4f2ee">Meșter<br>Răzvan</div>
-          <div class="pv-l" style="width:60%;margin-top:6px"></div><div class="pv-l" style="width:44%"></div>
-          <div class="pv-chips"><i></i><i></i><i></i></div>
-        </div></div>
+        <div class="card-vis"><img class="frame" src="img/work/matei.jpg" alt="Meșter Matei — live site" loading="eager"></div>
         <div class="card-body">
-          <h3>Meșter Răzvan</h3>
+          <h3>Meșter Matei</h3>
           <p data-i18n="work.1p">Handyman services, Bacău. Scroll-driven video, spill animation, built for one-tap calling.</p>
           <div class="tags"><span class="tag tag-live" data-i18n="work.live">Live</span><span class="tag">Website</span><span class="tag">Video</span></div>
         </div>
       </div></a>
 
       <a class="shell rv s-3" href="https://alexandrumihalcea.github.io/" target="_blank" rel="noopener"><div class="core card">
-        <div class="card-vis"><div class="frame pv" style="background:linear-gradient(160deg,#0d1614,#0b0b0d);color:#5fa38b">
-          <div class="pv-bar"><i></i><i></i><i></i></div>
-          <div class="pv-t" style="font-size:22px;color:#f4f2ee">Alexandru<br>Mihalcea</div>
-          <div class="pv-l" style="width:52%;margin-top:6px"></div><div class="pv-l" style="width:66%"></div>
-          <div class="pv-chips"><i></i><i></i></div>
-        </div></div>
+        <div class="card-vis"><img class="frame" src="img/work/portfolio.jpg" alt="Alexandru Mihalcea — portfolio" loading="eager"></div>
         <div class="card-body">
           <h3>Personal portfolio</h3>
           <p data-i18n="work.2p">Three.js hero, live terminal, case studies. The reference build for what motion can do.</p>
@@ -497,13 +505,8 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
         </div>
       </div></a>
 
-      <a class="shell rv s-2" href="https://morning-ritual-forge.lovable.app" target="_blank" rel="noopener"><div class="core card">
-        <div class="card-vis"><div class="frame pv" style="background:linear-gradient(160deg,#171310,#0b0b0d);color:#c9a882">
-          <div class="pv-bar"><i></i><i></i><i></i></div>
-          <div class="pv-t" style="font-size:19px;color:#f4f2ee">ORIGEN</div>
-          <div class="pv-l" style="width:70%;margin-top:5px"></div>
-          <div class="pv-chips"><i></i><i></i><i></i></div>
-        </div></div>
+      <a class="shell rv s-2" href="https://origenltd.shop" target="_blank" rel="noopener"><div class="core card">
+        <div class="card-vis"><img class="frame" src="img/work/origen.jpg" alt="ORIGEN — storefront" loading="lazy"></div>
         <div class="card-body">
           <h3>ORIGEN</h3>
           <p data-i18n="work.3p">Ecommerce brand and storefront for a morning-ritual product line.</p>
@@ -512,12 +515,7 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
       </div></a>
 
       <a class="shell rv s-2" href="work/restaurant.html" target="_blank" rel="noopener"><div class="core card">
-        <div class="card-vis"><div class="frame pv" style="background:linear-gradient(160deg,#231d16,#0f0d0b);color:#d8c3a0">
-          <div class="pv-bar"><i></i><i></i><i></i></div>
-          <div class="pv-t" style="font-size:19px;color:#f4f2ee">Comune</div>
-          <div class="pv-l" style="width:58%;margin-top:5px"></div>
-          <div class="pv-chips"><i></i><i></i></div>
-        </div></div>
+        <div class="card-vis"><img class="frame" src="img/work/comune.jpg" alt="Comune — concept build" loading="lazy"></div>
         <div class="card-body">
           <h3>Comune</h3>
           <p data-i18n="work.4p">Concept build for a Soho wine bar. Editorial layout, menu, reservations.</p>
@@ -526,12 +524,7 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
       </div></a>
 
       <a class="shell rv s-2" href="work/clinic.html" target="_blank" rel="noopener"><div class="core card">
-        <div class="card-vis"><div class="frame pv" style="background:linear-gradient(160deg,#151a1c,#0b0b0d);color:#a8c4cc">
-          <div class="pv-bar"><i></i><i></i><i></i></div>
-          <div class="pv-t" style="font-size:19px;color:#f4f2ee">Lumen<br>Skin</div>
-          <div class="pv-l" style="width:64%;margin-top:5px"></div>
-          <div class="pv-chips"><i></i><i></i><i></i></div>
-        </div></div>
+        <div class="card-vis"><img class="frame" src="img/work/lumen.jpg" alt="Lumen Skin — concept build" loading="lazy"></div>
         <div class="card-body">
           <h3>Lumen Skin</h3>
           <p data-i18n="work.5p">Concept build for an aesthetics clinic. Treatment pages, pricing, online booking.</p>

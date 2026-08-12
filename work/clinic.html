@@ -126,10 +126,10 @@ body.open .sheet a:nth-child(4){transition-delay:.28s}
 /* hero */
 .hero{min-height:100dvh;display:flex;align-items:center;padding-block:8.5rem 4rem}
 .hero-in{width:100%}
-.hero h1{font-size:clamp(2.6rem,5.4vw,4.8rem);letter-spacing:-.05em;margin-top:1.5rem;max-width:15ch}
+.hero h1{font-size:clamp(2.4rem,4.6vw,4.1rem);letter-spacing:-.05em;margin-top:1.5rem;max-width:15ch}
 .hero h1 span{color:var(--teal)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.4rem}
-.hero-bento{display:grid;grid-template-columns:repeat(6,1fr);gap:.85rem;margin-top:clamp(3rem,6vw,5rem)}
+.hero-bento{display:grid;grid-template-columns:repeat(6,1fr);gap:.85rem;margin-top:clamp(2rem,4vw,3.2rem)}
 .tile{padding:1.6rem 1.7rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.6rem;min-height:170px}
 .tile .k{font-size:10px;text-transform:uppercase;letter-spacing:.19em;color:var(--ink-faint)}
 .tile .v{font-family:'Switzer',sans-serif;font-weight:600;font-size:clamp(1.6rem,2.6vw,2.3rem);letter-spacing:-.045em;line-height:1}
@@ -137,10 +137,20 @@ body.open .sheet a:nth-child(4){transition-delay:.28s}
 .b-2{grid-column:span 2}.b-3{grid-column:span 3}.b-4{grid-column:span 4}.b-6{grid-column:span 6}
 .tile-accent{background:linear-gradient(150deg,var(--teal-soft),#fff 62%)}
 .tile-nude{background:linear-gradient(150deg,var(--nude),#fff 66%)}
+.hero-shot{height:100%;min-height:280px}
+.stat-stack{display:flex;flex-direction:column;gap:.85rem}
+.stat-stack .tile{min-height:0;padding:1.15rem 1.3rem;gap:.7rem}
+.stat-stack .tile .v{font-size:clamp(1.3rem,2vw,1.7rem)}
+
+.shot{position:relative;overflow:hidden;border-radius:var(--r-in);background:var(--bg-2)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease)}
+.shell:hover .shot img{transform:scale(1.04)}
 
 /* treatments */
 .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.9rem}
 .treat{padding:clamp(1.7rem,2.6vw,2.3rem);display:flex;flex-direction:column;gap:.8rem;height:100%}
+.treat-shot{aspect-ratio:16/10;margin:-.4rem -.4rem 1rem;border-radius:calc(var(--r-in) - .5rem)}
 .treat .ico{width:2.7rem;height:2.7rem;border-radius:.9rem;display:grid;place-items:center;
   background:var(--teal-soft);color:var(--teal);margin-bottom:.4rem}
 .treat .ico svg{width:17px;height:17px;stroke-width:1.3}
@@ -152,10 +162,11 @@ body.open .sheet a:nth-child(4){transition-delay:.28s}
 .who{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .portrait{border-radius:var(--r-in);aspect-ratio:4/5;position:relative;overflow:hidden;
   background:linear-gradient(165deg,#DCE7E7,#F3ECE6 55%,#E8D9CE)}
-.portrait::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(70% 55% at 50% 32%,rgba(255,255,255,.75),transparent 70%)}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait::after{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;
+  background:linear-gradient(transparent,rgba(20,24,26,.72))}
 .portrait span{position:absolute;left:0;right:0;bottom:1.4rem;text-align:center;font-size:.78rem;
-  color:var(--ink-faint);letter-spacing:.02em}
+  color:rgba(255,255,255,.9);letter-spacing:.02em;z-index:2}
 
 /* pricing rows */
 .plist{margin-top:clamp(2rem,4vw,3rem)}
@@ -186,7 +197,7 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;filter:none;transition:none}
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
 
-@media (max-width:1000px){.b-3{grid-column:span 6}.b-2{grid-column:span 3}.b-4{grid-column:span 6}
+@media (max-width:1000px){.b-3{grid-column:span 6}.b-2{grid-column:span 3}.b-4{grid-column:span 6}.stat-stack{flex-direction:row}.stat-stack>*{flex:1}.hero-shot{min-height:220px}
   .who{grid-template-columns:1fr}.portrait{max-width:330px;aspect-ratio:1/1}}
 @media (max-width:900px){.nav-links{display:none}.burger{display:block}.nav .btn{display:none}}
 @media (max-width:768px){
@@ -195,6 +206,7 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
   .hero{padding-block:7rem 3rem}
   .grid,.hero-bento{grid-template-columns:1fr;gap:.75rem}
   .b-2,.b-3,.b-4,.b-6{grid-column:span 1}
+  .stat-stack{flex-direction:column}
   .hero-actions .btn{flex:1 1 100%;justify-content:space-between}
 }
 </style>
@@ -230,15 +242,20 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
     </div>
 
     <div class="hero-bento">
-      <div class="shell rv b-2"><div class="core tile tile-accent">
-        <span class="k">Consultations</span><span class="v">Free<small> · 30 minutes</small></span>
+      <div class="shell rv b-4"><div class="core shot hero-shot">
+        <img src="img/c-room.jpg" alt="A treatment room at Lumen Skin" loading="eager" fetchpriority="high">
       </div></div>
-      <div class="shell rv b-2"><div class="core tile">
-        <span class="k">Practitioners</span><span class="v">2<small> · both prescribers</small></span>
-      </div></div>
-      <div class="shell rv b-2"><div class="core tile tile-nude">
-        <span class="k">Since</span><span class="v">2016<small> · Marylebone</small></span>
-      </div></div>
+      <div class="stat-stack b-2">
+        <div class="shell rv"><div class="core tile tile-accent">
+          <span class="k">Consultations</span><span class="v">Free<small> · 30 min</small></span>
+        </div></div>
+        <div class="shell rv"><div class="core tile">
+          <span class="k">Practitioners</span><span class="v">2<small> · both prescribers</small></span>
+        </div></div>
+        <div class="shell rv"><div class="core tile tile-nude">
+          <span class="k">Since</span><span class="v">2016<small> · Marylebone</small></span>
+        </div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -249,30 +266,35 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
     <h2 class="h2 rv" style="margin-top:1.4rem;margin-bottom:clamp(2.5rem,5vw,4rem)">Fewer options, chosen properly.</h2>
     <div class="grid">
       <div class="shell rv b-3"><div class="core treat">
+        <div class="shot treat-shot"><img src="img/c-detail.jpg" alt="Skin analysis under magnification" loading="lazy"></div>
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4"/></svg></span>
         <h3>Skin analysis &amp; plan</h3>
         <p>A proper look under magnification and UV, then a written twelve-week plan. No products sold on the day, no pressure. Most people leave with a routine and nothing else.</p>
         <span class="from">Free with any consultation</span>
       </div></div>
       <div class="shell rv b-3"><div class="core treat">
+        <div class="shot treat-shot"><img src="img/c-inject.jpg" alt="Assessment before treatment" loading="lazy"></div>
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l14 8M19 8L5 16"/></svg></span>
         <h3>Injectables</h3>
         <p>Wrinkle-relaxing and dermal filler, placed conservatively by prescribing practitioners. We will tell you when the answer is less, or none. Two-week review included in every course.</p>
         <span class="from">From £180</span>
       </div></div>
       <div class="shell rv b-2"><div class="core treat">
+        <div class="shot treat-shot"><img src="img/c-peel.jpg" alt="A medical peel being applied" loading="lazy"></div>
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c4-9 12-9 16 0"/><circle cx="12" cy="9" r="2.4"/></svg></span>
         <h3>Medical peels</h3>
         <p>Graded acid peels for pigmentation, texture and acne scarring. Course of three to six.</p>
         <span class="from">From £140</span>
       </div></div>
       <div class="shell rv b-2"><div class="core treat">
+        <div class="shot treat-shot"><img src="img/c-needle.jpg" alt="Microneedling treatment in progress" loading="lazy"></div>
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></span>
         <h3>Microneedling</h3>
         <p>Collagen induction with growth factors, for scarring, pores and early laxity.</p>
         <span class="from">From £220</span>
       </div></div>
       <div class="shell rv b-2"><div class="core treat">
+        <div class="shot treat-shot"><img src="img/c-still.jpg" alt="Prescription skincare" loading="lazy"></div>
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><path d="M9.5 10.5h5"/></svg></span>
         <h3>Prescription skincare</h3>
         <p>Tretinoin, azelaic and tranexamic acid, prescribed and reviewed, not sold off a shelf.</p>
@@ -284,7 +306,7 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--line)}
 
 <section id="who" style="background:var(--bg-2)">
   <div class="wrap who">
-    <div class="portrait rv"><span>Dr Elena Marsh, MBBS MRCGP</span></div>
+    <div class="portrait rv"><img src="img/c-doctor.jpg" alt="Dr Elena Marsh at the clinic" loading="lazy"><span>Dr Elena Marsh, MBBS MRCGP</span></div>
     <div>
       <span class="tagline rv">The practitioner</span>
       <h2 class="h2 rv" style="margin-top:1.4rem">You will see the same face every time.</h2>

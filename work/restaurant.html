@@ -102,28 +102,18 @@ body.open .sheet a:nth-child(4){transition-delay:.28s}
 .kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:10px;text-transform:uppercase;
   letter-spacing:.24em;color:var(--espresso-faint);margin-bottom:2rem}
 .kicker::before{content:"";width:26px;height:1px;background:var(--espresso-faint)}
-.hero h1{font-size:clamp(3.4rem,10.5vw,8.5rem);letter-spacing:-.045em}
+.hero h1{font-size:clamp(2.8rem,6.2vw,5.6rem);letter-spacing:-.045em}
 .hero h1 em{font-style:italic;color:var(--wine);padding-right:.09em}
-.hero .lede{color:var(--espresso-soft);font-size:clamp(1rem,1.3vw,1.15rem);max-width:40ch;margin-top:2rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.4rem}
+.hero .lede{color:var(--espresso-soft);font-size:clamp(1rem,1.3vw,1.15rem);max-width:40ch;margin-top:1.6rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2rem}
 
-/* art panels (stand-ins for photography) */
+/* photo panels */
 .panel{position:relative;border-radius:1.6rem;overflow:hidden;background:var(--cream-2)}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease)}
+.panel:hover img{transform:scale(1.04)}
 .panel::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-.art-1{background:
-  radial-gradient(120% 90% at 22% 18%,rgba(110,43,52,.92),transparent 58%),
-  radial-gradient(90% 80% at 82% 78%,rgba(36,28,22,.95),transparent 62%),
-  linear-gradient(158deg,#7A5540,#2C211A)}
-.art-2{background:
-  radial-gradient(100% 80% at 78% 22%,rgba(124,138,114,.85),transparent 60%),
-  linear-gradient(150deg,#D9CBB4,#6B5A48)}
-.art-3{background:
-  radial-gradient(110% 90% at 30% 80%,rgba(110,43,52,.75),transparent 62%),
-  linear-gradient(170deg,#4A3A30,#1C1512)}
-.art-4{background:
-  radial-gradient(120% 100% at 60% 20%,rgba(227,197,142,.75),transparent 64%),
-  linear-gradient(140deg,#8A6E54,#312720)}
 .hero-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.9rem}
 .hero-stack .panel:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}
 .hero-stack .panel:nth-child(2),.hero-stack .panel:nth-child(3){aspect-ratio:1/1}
@@ -149,17 +139,21 @@ body.open .sheet a:nth-child(4){transition-delay:.28s}
 .rail{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1.2rem;scroll-snap-type:x mandatory;
   scrollbar-width:none;-ms-overflow-style:none}
 .rail::-webkit-scrollbar{display:none}
-.pour{flex:0 0 clamp(230px,26vw,310px);scroll-snap-align:start;
-  transition:transform .8s var(--ease)}
-.pour:hover{transform:translateY(-6px)}
-.pour .panel{aspect-ratio:3/4;margin-bottom:1.1rem}
-.pour h4{font-family:'Zodiak',serif;font-size:1.2rem;font-weight:400}
-.pour span{display:block;font-size:.83rem;color:var(--espresso-faint);margin-top:.25rem}
-.pour .p{font-size:.9rem;color:var(--wine);margin-top:.5rem}
+.pour{flex:0 0 clamp(230px,24vw,290px);scroll-snap-align:start;
+  border-top:1px solid var(--espresso);padding-top:1.1rem;
+  display:flex;flex-direction:column;min-height:230px;
+  transition:border-color .8s var(--ease)}
+.pour:hover{border-color:var(--wine)}
+.pour .idx{font-family:'Zodiak',serif;font-size:.82rem;letter-spacing:.14em;
+  color:var(--espresso-faint);margin-bottom:2.4rem}
+.pour h4{font-family:'Zodiak',serif;font-size:1.45rem;font-weight:400;line-height:1.1}
+.pour span{display:block;font-size:.83rem;color:var(--espresso-faint);margin-top:.5rem}
+.pour .p{font-family:'Zodiak',serif;font-size:1.1rem;color:var(--wine);margin-top:auto;padding-top:1.2rem}
 
 /* find */
-.find{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
-.rows{display:flex;flex-direction:column;margin-top:1.8rem}
+.find{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.find-shot{aspect-ratio:3/4}
+.rows{display:flex;flex-direction:column;margin-top:2.2rem}
 .row{display:flex;justify-content:space-between;gap:1.5rem;padding:.9rem 0;border-bottom:1px solid var(--hair);font-size:.95rem}
 .row span:first-child{color:var(--espresso-faint)}
 
@@ -227,16 +221,16 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--hair)}
       </div>
     </div>
     <div class="hero-stack rv">
-      <div class="panel art-1"></div>
-      <div class="panel art-2"></div>
-      <div class="panel art-3"></div>
+      <div class="panel"><img src="img/r-bar.jpg" alt="The bar at Comune in the evening" loading="eager" fetchpriority="high"></div>
+      <div class="panel"><img src="img/r-plate.jpg" alt="Rigatoni with beef shin ragu" loading="lazy"></div>
+      <div class="panel"><img src="img/r-pour.jpg" alt="A glass of red being poured" loading="lazy"></div>
     </div>
   </div>
 </section>
 
 <section id="room">
   <div class="wrap room">
-    <div class="panel art-4 rv"></div>
+    <div class="panel rv"><img src="img/r-room.jpg" alt="Looking down the room from the front door" loading="lazy"></div>
     <div>
       <span class="kicker rv">The room</span>
       <h2 class="h2 rv">Built for the second bottle.</h2>
@@ -274,30 +268,31 @@ footer{padding-block:3rem 6.5rem;border-top:1px solid var(--hair)}
     <span class="kicker rv">By the glass</span>
     <h2 class="h2 rv" style="margin-bottom:clamp(2.5rem,5vw,3.5rem)">Six open right now.</h2>
     <div class="rail rv">
-      <article class="pour"><div class="panel art-1"></div><h4>Trebbiano d'Abruzzo</h4><span>Emidio Pepe · 2019 · Abruzzo</span><div class="p">14 / glass</div></article>
-      <article class="pour"><div class="panel art-2"></div><h4>Etna Rosso</h4><span>Graci · 2021 · Sicilia</span><div class="p">12 / glass</div></article>
-      <article class="pour"><div class="panel art-4"></div><h4>Chablis 1er Cru</h4><span>Moreau-Naudet · 2020 · Bourgogne</span><div class="p">16 / glass</div></article>
-      <article class="pour"><div class="panel art-3"></div><h4>Barbera d'Alba</h4><span>Vajra · 2022 · Piemonte</span><div class="p">11 / glass</div></article>
-      <article class="pour"><div class="panel art-2"></div><h4>Riesling Trocken</h4><span>Keller · 2021 · Rheinhessen</span><div class="p">15 / glass</div></article>
-      <article class="pour"><div class="panel art-1"></div><h4>Blanc de Blancs</h4><span>Chartogne-Taillet · NV · Champagne</span><div class="p">18 / glass</div></article>
+      <article class="pour"><span class="idx">I</span><h4>Trebbiano d'Abruzzo</h4><span>Emidio Pepe · 2019 · Abruzzo</span><div class="p">14 / glass</div></article>
+      <article class="pour"><span class="idx">II</span><h4>Etna Rosso</h4><span>Graci · 2021 · Sicilia</span><div class="p">12 / glass</div></article>
+      <article class="pour"><span class="idx">III</span><h4>Chablis 1er Cru</h4><span>Moreau-Naudet · 2020 · Bourgogne</span><div class="p">16 / glass</div></article>
+      <article class="pour"><span class="idx">IV</span><h4>Barbera d'Alba</h4><span>Vajra · 2022 · Piemonte</span><div class="p">11 / glass</div></article>
+      <article class="pour"><span class="idx">V</span><h4>Riesling Trocken</h4><span>Keller · 2021 · Rheinhessen</span><div class="p">15 / glass</div></article>
+      <article class="pour"><span class="idx">VI</span><h4>Blanc de Blancs</h4><span>Chartogne-Taillet · NV · Champagne</span><div class="p">18 / glass</div></article>
     </div>
   </div>
 </section>
 
 <section id="find">
   <div class="wrap find">
+    <div class="panel find-shot rv"><img src="img/r-staff.jpg" alt="Behind the bar at Comune" loading="lazy"></div>
     <div>
       <span class="kicker rv">Find us</span>
       <h2 class="h2 rv">42 Dean Street,<br>London W1D</h2>
       <p class="body-copy rv">Two minutes from Tottenham Court Road. The green door between the barber and the record shop.</p>
-    </div>
-    <div class="rv">
-      <div class="rows">
+      <div class="rv">
+        <div class="rows">
         <div class="row"><span>Tuesday — Thursday</span><span>17:00 — 23:00</span></div>
         <div class="row"><span>Friday — Saturday</span><span>12:00 — 00:00</span></div>
         <div class="row"><span>Sunday</span><span>12:00 — 18:00</span></div>
         <div class="row"><span>Monday</span><span>Closed</span></div>
-        <div class="row"><span>Bar</span><span>Walk-ins only</span></div>
+          <div class="row"><span>Bar</span><span>Walk-ins only</span></div>
+        </div>
       </div>
     </div>
   </div>
