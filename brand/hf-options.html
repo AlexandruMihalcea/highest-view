@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Highest View — generated marks</title>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500&f[]=satoshi@400,500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#050505;--paper:#f4f2ee;--gold:#e8b866;--dim:rgba(244,242,238,.5);--hair:rgba(244,242,238,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:'Satoshi',system-ui,sans-serif;
+  padding:2.5rem;-webkit-font-smoothing:antialiased}
+h1{font-family:'Clash Display',sans-serif;font-weight:500;font-size:2rem;letter-spacing:-.03em;margin-bottom:.4rem}
+.sub{color:var(--dim);font-size:.9rem;margin-bottom:2.5rem;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.card{border:1px solid var(--hair);border-radius:18px;padding:1.4rem;display:flex;flex-direction:column;gap:1.1rem}
+.tag{font-family:'Clash Display',sans-serif;color:var(--gold);font-size:.75rem;letter-spacing:.2em}
+.big{background:var(--paper);border-radius:12px;height:200px;display:grid;place-items:center;overflow:hidden}
+.big img{width:155px;height:155px}
+.sizes{display:flex;align-items:center;gap:1.1rem}
+.nav{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.05);border:1px solid var(--hair);
+  border-radius:999px;padding:.4rem .95rem;font-family:'Clash Display',sans-serif;font-size:.85rem}
+.nav img{width:20px;height:20px;background:#f4f2ee;border-radius:3px}
+.fav{width:30px;height:30px;background:#1a1a1c;border-radius:6px;display:grid;place-items:center}
+.fav img{width:16px;height:16px;background:#f4f2ee;border-radius:2px}
+.lt{width:54px;height:54px;background:var(--paper);border-radius:9px;display:grid;place-items:center}
+.lt img{width:34px;height:34px}
+.cap{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,242,238,.3);text-align:center;margin-top:.3rem}
+.cell{display:flex;flex-direction:column;align-items:center}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>Generated marks — wings forward</h1>
+<p class="sub">Six from Recraft's vector engine, all returned as real SVG. Same four tests as before: large, nav, 16px tab icon, and reversed on light. Shown in their native black-on-white — the generated files carry a baked white background, which I strip when I redraw the winner in gold.</p>
+<div class="grid" id="g"></div>
+<script>
+const items=[["A","hf/hf1.svg"],["B","hf/hf2.svg"],["C","hf/hf3.svg"],["D","hf/hf4.svg"],["E","hf/hf5.svg"],["F","hf/hf6.svg"]];
+document.getElementById('g').innerHTML = items.map(([k,src])=>`
+  <div class="card">
+    <span class="tag">${k}</span>
+    <div class="big"><img src="${src}" alt="${k}"></div>
+    <div class="sizes">
+      <div class="cell"><div class="nav"><img src="${src}">Highest View</div><span class="cap">Nav</span></div>
+      <div class="cell"><div class="fav"><img src="${src}"></div><span class="cap">16px</span></div>
+      <div class="cell"><div class="lt"><img src="${src}"></div><span class="cap">Light</span></div>
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>
