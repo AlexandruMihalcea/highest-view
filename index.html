@@ -253,6 +253,10 @@ body.menu-open .sheet a:nth-child(5){transition-delay:.34s}
   background-size:9px;background-repeat:no-repeat;background-position:center}
 .tier.featured{background:linear-gradient(168deg,rgba(232,184,102,.13),transparent 55%)}
 .tier-flag{position:absolute;top:1.3rem;right:1.3rem}
+.tier-price .was{font-size:.42em;color:var(--paper-faint);letter-spacing:-.01em;margin-left:.5rem;
+  text-decoration-thickness:1px;vertical-align:middle}
+.founding{max-width:60ch;font-size:.95rem;color:var(--paper-dim);border-left:2px solid var(--gold);
+  padding:.15rem 0 .15rem 1rem}
 .price-note{margin-top:1.6rem;font-size:.85rem;color:var(--paper-faint);text-align:center}
 
 /* ============ ABOUT ============ */
@@ -576,11 +580,13 @@ footer{border-top:1px solid var(--hair-soft);padding-block:3.2rem 4rem}
     <div class="sec-head">
       <span class="eyebrow rv" data-i18n="price.eyebrow">Pricing</span>
       <h2 class="h2 rv" data-i18n="price.h2">Fixed prices, published. No quotes, no surprises.</h2>
+      <p class="founding rv" data-i18n="price.founding">Founding rate — the first 3 clients get Launch at £490 instead of £690, in exchange for a review once the site is live. Until 28 August.</p>
     </div>
     <div class="tiers">
-      <div class="shell rv"><div class="core tier">
+      <div class="shell rv"><div class="core tier" style="position:relative">
+        <span class="eyebrow tier-flag" data-i18n="price.foundflag">Founding rate</span>
         <span class="tier-name" data-i18n="price.1n">Launch</span>
-        <div class="tier-price"><span data-price="690">£690</span></div>
+        <div class="tier-price"><span data-price="490">£490</span> <s class="was" data-price="690">£690</s></div>
         <p class="tier-desc" data-i18n="price.1d">One page that does the whole job. For trades, single-location businesses and anyone starting from nothing.</p>
         <ul data-i18n-list="price.1f"></ul>
         <a href="#contact" class="btn btn-ghost btn-sm" style="align-self:flex-start"><span data-i18n="price.cta">Choose this</span><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span></a>
@@ -728,7 +734,7 @@ en:{
 "proc.n1":"Step one","proc.1t":"One conversation","proc.1p":"Twenty minutes on WhatsApp or a call. What you do, who buys it, what you want people to feel. You get a fixed price the same day.",
 "proc.n2":"Step two","proc.2t":"We build it","proc.2p":"You see the real thing, not a mockup. One round of changes included, and you tell us what to move.",
 "proc.n3":"Step three","proc.3t":"It goes live","proc.3p":"Domain, hosting, Google Business, and everything connected. Five working days from the first message.",
-"price.eyebrow":"Pricing","price.h2":"Fixed prices, published. No quotes, no surprises.","price.popular":"Most chosen","price.cta":"Choose this",
+"price.eyebrow":"Pricing","price.h2":"Fixed prices, published. No quotes, no surprises.","price.popular":"Most chosen","price.cta":"Choose this","price.foundflag":"Founding rate","price.founding":"Founding rate — the first 3 clients get Launch at £490 instead of £690, in exchange for a review once the site is live. Until 28 August.",
 "price.1n":"Launch","price.1d":"One page that does the whole job. For trades, single-location businesses and anyone starting from nothing.",
 "price.1f":"One-page site, built to convert|Mobile-first, loads in under two seconds|WhatsApp and call buttons|Google Business Profile set up|Live in 5 working days",
 "price.2n":"Growth","price.2d":"A full site plus the identity around it. For businesses that already have customers and want to look like it.",
@@ -779,7 +785,7 @@ it:{
 "proc.n1":"Passo uno","proc.1t":"Una conversazione","proc.1p":"Venti minuti su WhatsApp o al telefono. Cosa fai, chi compra, cosa vuoi far sentire. Ricevi un prezzo fisso lo stesso giorno.",
 "proc.n2":"Passo due","proc.2t":"Lo costruiamo","proc.2p":"Vedi la cosa vera, non un mockup. Un giro di modifiche incluso, e mi dici cosa spostare.",
 "proc.n3":"Passo tre","proc.3t":"Va online","proc.3p":"Dominio, hosting, Google Business e tutto collegato. Cinque giorni lavorativi dal primo messaggio.",
-"price.eyebrow":"Prezzi","price.h2":"Prezzi fissi, pubblicati. Niente preventivi, niente sorprese.","price.popular":"Il più scelto","price.cta":"Scegli questo",
+"price.eyebrow":"Prezzi","price.h2":"Prezzi fissi, pubblicati. Niente preventivi, niente sorprese.","price.popular":"Il più scelto","price.cta":"Scegli questo","price.foundflag":"Tariffa fondatore","price.founding":"Tariffa fondatore — i primi 3 clienti ottengono Launch a €560 invece di €790, in cambio di una recensione a sito online. Fino al 28 agosto.",
 "price.1n":"Launch","price.1d":"Una pagina che fa tutto il lavoro. Per artigiani, attività con una sede e chi parte da zero.",
 "price.1f":"Sito di una pagina, costruito per convertire|Prima il mobile, carica in meno di due secondi|Pulsanti WhatsApp e chiamata|Profilo Google Business configurato|Online in 5 giorni lavorativi",
 "price.2n":"Growth","price.2d":"Un sito completo più l'identità che lo circonda. Per chi ha già clienti e vuole sembrarlo.",
@@ -830,7 +836,7 @@ es:{
 "proc.n1":"Paso uno","proc.1t":"Una conversación","proc.1p":"Veinte minutos por WhatsApp o llamada. Qué haces, quién te compra, qué quieres que sientan. Recibes un precio cerrado el mismo día.",
 "proc.n2":"Paso dos","proc.2t":"Lo construimos","proc.2p":"Ves la cosa real, no una maqueta. Una ronda de cambios incluida, y me dices qué mover.",
 "proc.n3":"Paso tres","proc.3t":"Sale en línea","proc.3p":"Dominio, hosting, Google Business y todo conectado. Cinco días laborables desde el primer mensaje.",
-"price.eyebrow":"Precios","price.h2":"Precios cerrados y publicados. Sin presupuestos, sin sorpresas.","price.popular":"El más elegido","price.cta":"Elegir este",
+"price.eyebrow":"Precios","price.h2":"Precios cerrados y publicados. Sin presupuestos, sin sorpresas.","price.popular":"El más elegido","price.cta":"Elegir este","price.foundflag":"Tarifa fundador","price.founding":"Tarifa fundador — los 3 primeros clientes consiguen Launch por 560 € en vez de 790 €, a cambio de una reseña cuando la web esté online. Hasta el 28 de agosto.",
 "price.1n":"Launch","price.1d":"Una página que hace todo el trabajo. Para oficios, negocios de un local y quien empieza de cero.",
 "price.1f":"Web de una página, hecha para convertir|Primero móvil, carga en menos de dos segundos|Botones de WhatsApp y llamada|Perfil de Google Business configurado|En línea en 5 días laborables",
 "price.2n":"Growth","price.2d":"Una web completa más la identidad que la rodea. Para quien ya tiene clientes y quiere parecerlo.",
@@ -881,7 +887,7 @@ fr:{
 "proc.n1":"Étape un","proc.1t":"Une conversation","proc.1p":"Vingt minutes sur WhatsApp ou au téléphone. Ce que vous faites, qui achète, ce que vous voulez faire ressentir. Vous avez un prix ferme le jour même.",
 "proc.n2":"Étape deux","proc.2t":"On le construit","proc.2p":"Vous voyez la vraie chose, pas une maquette. Un tour de modifications inclus, et vous dites quoi déplacer.",
 "proc.n3":"Étape trois","proc.3t":"Mise en ligne","proc.3p":"Domaine, hébergement, Google Business et tout le reste connecté. Cinq jours ouvrés depuis le premier message.",
-"price.eyebrow":"Tarifs","price.h2":"Des prix fermes, affichés. Pas de devis, pas de surprises.","price.popular":"Le plus choisi","price.cta":"Choisir",
+"price.eyebrow":"Tarifs","price.h2":"Des prix fermes, affichés. Pas de devis, pas de surprises.","price.popular":"Le plus choisi","price.cta":"Choisir","price.foundflag":"Tarif fondateur","price.founding":"Tarif fondateur — les 3 premiers clients obtiennent Launch à 560 € au lieu de 790 €, en échange d'un avis une fois le site en ligne. Jusqu'au 28 août.",
 "price.1n":"Launch","price.1d":"Une page qui fait tout le travail. Pour les artisans, les commerces d'un seul site et ceux qui partent de zéro.",
 "price.1f":"Site d'une page, conçu pour convertir|Mobile d'abord, chargé en moins de deux secondes|Boutons WhatsApp et appel|Fiche Google Business configurée|En ligne en 5 jours ouvrés",
 "price.2n":"Growth","price.2d":"Un site complet et l'identité autour. Pour ceux qui ont déjà des clients et veulent en avoir l'air.",
@@ -906,10 +912,10 @@ fr:{
 
 /* price tables per language */
 const PRICES = {
-  en:{690:"£690",1490:"£1,490",2900:"£2,900"},
-  it:{690:"€790",1490:"€1.690",2900:"€3.290"},
-  es:{690:"790 €",1490:"1.690 €",2900:"3.290 €"},
-  fr:{690:"790 €",1490:"1 690 €",2900:"3 290 €"}
+  en:{490:"£490",690:"£690",1490:"£1,490",2900:"£2,900"},
+  it:{490:"€560",690:"€790",1490:"€1.690",2900:"€3.290"},
+  es:{490:"560 €",690:"790 €",1490:"1.690 €",2900:"3.290 €"},
+  fr:{490:"560 €",690:"790 €",1490:"1 690 €",2900:"3 290 €"}
 };
 
 /* =====================================================================
